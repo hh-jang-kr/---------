@@ -33,3 +33,104 @@ flowchart TB
     AA --> WS
     AA --> API
 ```
+
+### 📦 `CryptoMarketMonitor` - Ports & Adapters Architecture 패키지 구조
+```
+🔄 데이터 흐름
+
+외부 요청 → In Adapter → Port → Application Service → Domain → Out Port → Out Adapter → 외부 시스템
+```
+
+#### 🎯 Core (Domain & Application)
+```
+cryptoflow
+├── 🚀 core
+│   ├── 💼 domain
+│   │   ├── market
+│   │   │   ├── Market.java
+│   │   │   ├── Candle.java
+│   │   │   └── Trade.java
+│   │   ├── analysis
+│   │   │   ├── Pattern.java
+│   │   │   └── Analysis.java
+│   │   └── alert
+│   │       ├── Alert.java
+│   │       └── AlertCondition.java
+│   └── 📊 application
+│       ├── port
+│       │   ├── in
+│       │   │   ├── CollectMarketDataUseCase.java
+│       │   │   ├── AnalyzeMarketDataUseCase.java
+│       │   │   └── ManageAlertUseCase.java
+│       │   └── out
+│       │       ├── LoadMarketDataPort.java
+│       │       ├── SaveAnalysisPort.java
+│       │       └── NotifyAlertPort.java
+│       └── service
+│           ├── MarketDataService.java
+│           ├── AnalysisService.java
+│           └── AlertService.java
+```
+
+#### 🔌 Adapters (Infrastructure & Interface)
+```
+├── 🔄 adapter
+│   ├── 📥 in
+│   │   ├── web
+│   │   │   ├── controller
+│   │   │   │   ├── MarketController.java
+│   │   │   │   ├── AnalysisController.java
+│   │   │   │   └── AlertController.java
+│   │   │   ├── dto
+│   │   │   │   ├── request
+│   │   │   │   └── response
+│   │   │   └── mapper
+│   │   │       └── WebDtoMapper.java
+│   │   └── websocket
+│   │       ├── handler
+│   │       │   ├── MarketWebSocketHandler.java
+│   │       │   └── AlertWebSocketHandler.java
+│   │       └── mapper
+│   │           └── WebSocketDtoMapper.java
+│   └── 📤 out
+│       ├── persistence
+│       │   ├── market
+│       │   │   ├── MarketRepository.java
+│       │   │   ├── MarketJpaEntity.java
+│       │   │   └── MarketPersistenceAdapter.java
+│       │   └── analysis
+│       │       ├── AnalysisRepository.java
+│       │       ├── AnalysisJpaEntity.java
+│       │       └── AnalysisPersistenceAdapter.java
+│       ├── external
+│       │   └── bithumb
+│       │       ├── BithumbApiClient.java
+│       │       ├── BithumbApiAdapter.java
+│       │       └── dto
+│       │           ├── BithumbMarketDto.java
+│       │           └── BithumbMapper.java
+│       ├── messaging
+│       │   └── kafka
+│       │       ├── KafkaProducerAdapter.java
+│       │       └── KafkaConsumerAdapter.java
+│       └── cache
+│           └── redis
+│               ├── RedisRepository.java
+│               └── RedisCacheAdapter.java
+```
+
+#### ⚙️ Common (Configuration & Utils)
+```
+└── 🛠️ common
+    ├── config
+    │   ├── WebConfig.java
+    │   ├── SecurityConfig.java
+    │   ├── KafkaConfig.java
+    │   └── RedisConfig.java
+    ├── exception
+    │   ├── DomainException.java
+    │   └── AdapterException.java
+    └── util
+        ├── DateTimeUtil.java
+        └── ValidationUtil.java
+```
