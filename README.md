@@ -1,6 +1,9 @@
 ## 실시간 가상자산 시장 모니터링 플랫폼 
 - 사용 기술: Java, Spring Boot, Kafka, Redis
 
+### 핵사고날로 표현한 구조
+<img width="1028" alt="image" src="https://github.com/user-attachments/assets/f75ce92b-7e92-43e4-969f-dd5320587257" />
+
 ### 간략한 시스템 구조
 ```mermaid
 flowchart TB
