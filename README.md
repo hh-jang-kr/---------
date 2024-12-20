@@ -2,7 +2,7 @@
 - 사용 기술: Java, Spring Boot, Kafka, Redis
 
 ### 핵사고날로 표현한 구조
-<img width="1028" alt="image" src="https://github.com/user-attachments/assets/f75ce92b-7e92-43e4-969f-dd5320587257" />
+![image](https://github.com/user-attachments/assets/b0d540ef-624a-4f26-8885-3120b427093e)
 
 ### 간략한 시스템 구조
 ```mermaid
