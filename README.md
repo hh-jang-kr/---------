@@ -1,6 +1,9 @@
 ## 실시간 가상자산 시장 모니터링 플랫폼 
 - 사용 기술: Java, Spring Boot, Kafka, Redis
 
+### 개발 일지
+- [개발 일지1. 중앙화 거래소 CEX 란](./개발 일지/CEX-중앙화거래소.md)
+
 ### 핵사고날로 표현한 구조
 ![image](https://github.com/user-attachments/assets/b0d540ef-624a-4f26-8885-3120b427093e)
 
